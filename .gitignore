@@ -1,0 +1,15 @@
+# Secrets / local config
+github.properties
+local.properties
+
+# Build output
+.gradle/
+.kotlin/
+build/
+
+# IDE
+*.iml
+.idea/
+
+# OS
+.DS_Store

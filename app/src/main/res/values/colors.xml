@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="oneui_bg">#f3f3f5</color>
+    <color name="oneui_card_bg">#fcfcff</color>
+    <color name="oneui_divider">#e4e4e7</color>
+    <color name="oneui_text_primary">#000000</color>
+    <color name="oneui_text_secondary">#848487</color>
+    <color name="oneui_accent">#0381fe</color>
+    <color name="oneui_preview_bg">#667788</color>
+</resources>

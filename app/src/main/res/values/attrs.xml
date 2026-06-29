@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Samsung OneUI widget style flags — required for launcher blur -->
+    <attr name="widgetStyle" format="integer">
+        <flag name="colorful" value="0x1" />
+        <flag name="monotone" value="0x2" />
+    </attr>
+
+    <!-- Samsung OneUI widget size flags — optional but improves widget picker integration -->
+    <attr name="widgetSize" format="integer">
+        <flag name="small" value="0x1" />
+        <flag name="wideSmall" value="0x2" />
+        <flag name="medium" value="0x4" />
+        <flag name="large" value="0x8" />
+        <flag name="extraLarge" value="0x10" />
+        <flag name="extraLargeLong" value="0x20" />
+    </attr>
+
+    <!-- Per-size layouts read by Samsung's One UI widget picker. -->
+    <attr name="previewLayoutSmall" format="reference" />
+    <attr name="previewLayoutWideSmall" format="reference" />
+    <attr name="previewLayoutMedium" format="reference" />
+    <attr name="previewLayoutLarge" format="reference" />
+    <attr name="previewLayoutExtraLarge" format="reference" />
+    <attr name="previewLayoutExtraLargeLong" format="reference" />
+
+    <!-- Samsung OneUI target host flags -->
+    <attr name="targetHost" format="integer">
+        <flag name="home" value="0x1" />
+        <flag name="cover" value="0x2" />
+        <flag name="lock" value="0x4" />
+        <flag name="dex_home" value="0x8" />
+    </attr>
+
+    <!-- Samsung OneUI featured widget flags — enables widget label on home screen -->
+    <attr name="featuredWidget" format="integer">
+        <flag name="tiny" value="0x1" />
+        <flag name="small" value="0x2" />
+        <flag name="wideSmall" value="0x4" />
+        <flag name="medium" value="0x8" />
+        <flag name="large" value="0x10" />
+        <flag name="extraLarge" value="0x20" />
+        <flag name="extraLargeLong" value="0x40" />
+    </attr>
+</resources>

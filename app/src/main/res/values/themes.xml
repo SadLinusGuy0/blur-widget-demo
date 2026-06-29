@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BlurWidgetDemo" parent="OneUITheme">
+        <item name="colorPrimary">@color/oneui_accent</item>
+    </style>
+
+    <style name="ButtonStyle" parent="">
+        <item name="android:clickable">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:focusable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:minWidth">140dp</item>
+    </style>
+
+    <style name="ButtonStyle.Colored" parent="ButtonStyle">
+        <item name="android:theme">@style/OneUI.ContainedPrimaryColorButtonTheme</item>
+    </style>
+
+    <style name="AboutLinkRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:minHeight">64dp</item>
+        <item name="android:paddingHorizontal">12dp</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="WidgetPresetButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:minWidth">72dp</item>
+        <item name="android:paddingHorizontal">14dp</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>

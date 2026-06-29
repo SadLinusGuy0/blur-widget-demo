@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dev.oneuiproject.oneui.widget.AdaptiveCoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/about_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?roundedCornerColor">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/about_app_bar"
+        style="?attr/appBarLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:seslHeightProportion="0.5"
+        app:seslUseCustomHeight="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="?attr/collapsingToolbarLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?attr/actionBarSize"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                app:isCustomTitle="true">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sec"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/about_header_version"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sec"
+                    android:gravity="center"
+                    android:textColor="?android:textColorSecondary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/about_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                app:layout_collapseMode="pin" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/about_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="24dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="14dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sec"
+                        android:text="@string/app_name"
+                        android:textColor="?android:textColorPrimary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/about_compact_version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sec"
+                        android:textColor="?android:textColorSecondary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sec"
+                android:lineSpacingExtra="3dp"
+                android:paddingStart="24dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="12dp"
+                android:text="@string/about_summary"
+                android:textColor="?android:textColorSecondary"
+                android:textSize="15sp" />
+
+            <dev.oneuiproject.oneui.widget.Separator
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_credits_section" />
+
+            <dev.oneuiproject.oneui.widget.RoundedLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:colorBackground"
+                android:orientation="vertical">
+
+                <dev.oneuiproject.oneui.widget.CardItemView
+                    android:id="@+id/about_tjg_credit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:showTopDivider="false"
+                    app:title="@string/about_tjg_title" />
+
+                <dev.oneuiproject.oneui.widget.CardItemView
+                    android:id="@+id/about_oneui_credit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:showTopDivider="true"
+                    app:summary="@string/about_oneui_summary"
+                    app:title="@string/oneui_project" />
+            </dev.oneuiproject.oneui.widget.RoundedLinearLayout>
+
+            <dev.oneuiproject.oneui.widget.Separator
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_licenses_section" />
+
+            <dev.oneuiproject.oneui.widget.RoundedLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:colorBackground"
+                android:orientation="vertical">
+
+                <dev.oneuiproject.oneui.widget.CardItemView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:showTopDivider="false"
+                    app:summary="@string/about_mit_summary"
+                    app:title="@string/about_mit_title" />
+            </dev.oneuiproject.oneui.widget.RoundedLinearLayout>
+
+            <dev.oneuiproject.oneui.widget.RelativeLinksCard
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:showTopDivider="false"
+                app:title="@string/about_links_section">
+
+                <TextView
+                    android:id="@+id/about_tjg"
+                    style="@style/OneUI.RelativeLinkTextViewStyle"
+                    android:text="@string/about_tjg_link" />
+
+                <TextView
+                    android:id="@+id/about_oneui"
+                    style="@style/OneUI.RelativeLinkTextViewStyle"
+                    android:text="@string/oneui_project" />
+
+                <TextView
+                    android:id="@+id/about_repo"
+                    style="@style/OneUI.RelativeLinkTextViewStyle"
+                    android:text="@string/about_repo_link" />
+            </dev.oneuiproject.oneui.widget.RelativeLinksCard>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/about_swipe_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="72dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:rotation="180"
+            android:src="@drawable/ic_oui_keyboard_arrow_down"
+            app:tint="?android:textColorSecondary" />
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="-26dp"
+            android:rotation="180"
+            android:src="@drawable/ic_oui_keyboard_arrow_down"
+            app:tint="?android:textColorSecondary" />
+    </LinearLayout>
+</dev.oneuiproject.oneui.widget.AdaptiveCoordinatorLayout>

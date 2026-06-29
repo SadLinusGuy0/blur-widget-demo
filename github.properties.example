@@ -1,0 +1,11 @@
+# Copy this file to "github.properties" and fill in your own values.
+#
+# The oneui-design library is hosted on GitHub Packages, which requires
+# authentication even for public packages. Create a GitHub Personal Access
+# Token with the single scope "read:packages":
+#   https://github.com/settings/tokens
+#
+# github.properties is gitignored — never commit your real token.
+
+ghUsername=your-github-username
+ghAccessToken=ghp_your_read_packages_token
