@@ -1,9 +1,9 @@
 # Adding One UI wallpaper blur to your own widgets
 
-Third-party Android widgets **can** hook into Samsung One UI Home's native
+Third-party Android widgets **can** hook into One UI Home's native
 wallpaper blur — the same frosted-glass effect used by Samsung's own Weather,
 Clock, and Calendar widgets. Samsung doesn't document this, but it works on any
-One UI 5+ device.
+One UI 7.0+ device.
 
 The widget itself never renders a blur. It just declares the right metadata and
 paints a **semi-transparent background**; the launcher detects that, captures the
@@ -92,7 +92,7 @@ false and blur is skipped. Set it to whichever sizes your widget supports.
 
 ## What the launcher does
 
-When all three conditions are met, One UI Home:
+When all three conditions are met, One UI Home does the following:
 
 1. Captures the wallpaper region behind the widget (`WidgetBlurManager.getCroppedScreenShot()`).
 2. Applies a Gaussian blur to that crop.
@@ -128,7 +128,7 @@ rebuilds the colour with `Color.HSVToColor` — see `BlurWidget.tintColor()`.
 
 ## Bonus: featured-widget labels
 
-One UI Home can show a label below "featured" widgets (like Samsung's own). Add a
+One UI Home can show a label below "featured" widgets (like Samsung's own apps). Add a
 `featuredWidget` attribute and reference it from the provider XML:
 
 ```xml
@@ -157,8 +157,4 @@ can toggle labels under **Featured widgets** in One UI Home settings.
 - [ ] `attrs.xml` defines `widgetStyle` and `widgetSize`
 - [ ] `appwidget-provider` XML sets `app:widgetStyle="colorful"`
 - [ ] `appwidget-provider` XML sets `app:widgetSize` to at least one size
-- [ ] Device is running Samsung One UI 5 or later
-
-## Tested on
-
-- Samsung Galaxy, One UI 7 / Android 15, One UI Home launcher
+- [ ] Device is running Samsung One UI 7.0 or later (technically installs on anything else, just won't render blur)
