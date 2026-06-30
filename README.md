@@ -8,12 +8,13 @@ A working proof-of-concept showing that **third-party Android widgets can use On
 Samsung's own Weather, Clock, and Calendar widgets. Samsung doesn't document
 this, but it works on any One UI 7.0+ device.
 
-The app ships a single resizable widget whose **tint and opacity you can tune
-live** through a configuration screen, so you can see exactly how the blur
-responds before porting the pattern into your own app.
+The app ships a resizable home-screen widget whose **tint and opacity you can
+tune live** through a configuration screen, plus tiny lock-screen message
+widgets that show the Samsung lock/AOD metadata pattern.
 
-> **Just want the technique?** See the [Integration Guide](docs/INTEGRATION.md)
-> for a step-by-step walkthrough of adding One UI blur to your own widgets.
+> **Just want the technique?** See the wiki guides for
+> [One UI blur integration](https://github.com/thatjoshguy67/blur-widget-demo/wiki/One-UI-Blur-Integration)
+> and [lock-screen widgets](https://github.com/thatjoshguy67/blur-widget-demo/wiki/Lock-Screen-Widgets).
 
 ## Download
 
@@ -29,7 +30,8 @@ attributes and paints a **semi-transparent background** on a view tagged
 the widget, blurs it, and draws it underneath — your background colour tints the
 result. Three things must be true (root `@android:id/background` view, an alpha
 between 1–254, and `app:widgetStyle="colorful"` + a real `app:widgetSize`). The
-[Integration Guide](docs/INTEGRATION.md) covers each one.
+[One UI blur integration wiki guide](https://github.com/thatjoshguy67/blur-widget-demo/wiki/One-UI-Blur-Integration)
+covers each one.
 
 ## Building
 
@@ -65,6 +67,30 @@ resolve dependencies:
 
 Then open the app, tap **Add widget**, place it on a Samsung home screen, and use
 the configuration screen to adjust tint and opacity.
+
+## Lock screen widgets
+
+The demo also includes two Samsung lock-screen widgets:
+
+- **Blur Message 1x1** — a tiny centered message.
+- **Blur Message 2x1** — the same randomized message treatment in a wider slot.
+
+On a Samsung device, open the lock screen editor, choose **Widgets**, then add
+one of the Blur Message widgets. Each refresh chooses a short message such as
+`Glass`, `Calm`, or `Breathe`.
+
+For your own app, the important pieces are:
+
+- A separate `AppWidgetProvider` receiver per lock-screen size.
+- `android:widgetCategory="0x2000"` in each lock-screen provider XML.
+- Samsung monotone metadata via `samsung.appwidget.monotone.info`.
+- `app:targetHost="lock_and_aod|cover"` and the matching `tiny`, `small`, or
+  `medium` size attributes.
+- A `REQUEST_SERVICEBOX_REMOTEVIEWS` receiver if you want to support Samsung's
+  SystemUI/ServiceBox RemoteViews request path.
+
+The [Lock Screen Widgets wiki guide](https://github.com/thatjoshguy67/blur-widget-demo/wiki/Lock-Screen-Widgets)
+has the full setup.
 
 ## Continuous integration
 
@@ -111,15 +137,18 @@ and run `./gradlew assembleRelease`. Without it, release builds are left unsigne
 app/src/main/
 ├── java/com/example/blurwidgetdemo/
 │   ├── BlurWidget.kt              # AppWidgetProvider — picks layout, applies tint
+│   ├── LockScreenMessageWidgets.kt # 1x1/2x1 Samsung lock-screen widgets
 │   ├── WidgetConfigActivity.kt    # One UI tint/opacity config + live preview
 │   ├── MainActivity.kt            # Onboarding + "Add widget" entry point
 │   └── AboutActivity.kt           # About / credits screen
 ├── res/
 │   ├── layout/widget_blur.xml     # Widget layout with @android:id/background
+│   ├── layout/lockscreen_message_*.xml # Lock-screen message RemoteViews layouts
 │   ├── xml/widget_provider_blur.xml  # Provider: widgetStyle + widgetSize + previews
+│   ├── xml/lockscreen_message_*_widget_info.xml # Lock-screen provider metadata
 │   └── values/attrs.xml           # Samsung custom widget attribute definitions
 └── AndroidManifest.xml
-docs/INTEGRATION.md                # How to add One UI blur to your own widgets
+docs/INTEGRATION.md                # Links to the full GitHub Wiki guides
 ```
 
 ## Credits
