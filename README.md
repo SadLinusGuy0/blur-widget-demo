@@ -87,9 +87,11 @@ back to these environment variables on CI.
 release APK** and attaches it to a GitHub Release whenever a `v*` tag is pushed:
 
 ```bash
-git tag v1.0.0
-git push origin v1.0.0
+git tag v1.1.0
+git push origin v1.1.0
 ```
+
+Release notes are pulled from the matching section in [`CHANGELOG.md`](CHANGELOG.md).
 
 You can also trigger it manually from the **Actions → Release** tab (provide the
 tag to publish). Signing uses a dedicated keystore stored in repository secrets:

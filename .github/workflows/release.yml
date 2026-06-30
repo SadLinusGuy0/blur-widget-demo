@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Tag to publish (created at the current commit if it doesn't exist), e.g. v1.0.0"
+        description: "Tag to publish (created at the current commit if it doesn't exist), e.g. v1.1.0"
         required: true
 
 permissions:
@@ -49,15 +49,33 @@ jobs:
           TAG="${{ github.event.inputs.tag || github.ref_name }}"
           cp app/build/outputs/apk/release/app-release.apk "blur-widget-${TAG}.apk"
 
+      - name: Extract release notes
+        run: |
+          TAG="${{ github.event.inputs.tag || github.ref_name }}"
+          VERSION="${TAG#v}"
+          awk -v version="$VERSION" '
+            $0 ~ "^## \\[" version "\\]" { capture = 1; next }
+            capture && /^## \[/ { capture = 0 }
+            capture { print }
+          ' CHANGELOG.md > release-notes.md
+          if [ ! -s release-notes.md ]; then
+            {
+              echo "Release notes for ${TAG} were not found in CHANGELOG.md."
+              echo
+              echo "See CHANGELOG.md for details."
+            } > release-notes.md
+          fi
+
       - name: Publish to GitHub Releases
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           TAG="${{ github.event.inputs.tag || github.ref_name }}"
           if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release edit "$TAG" --notes-file release-notes.md
             gh release upload "$TAG" "blur-widget-${TAG}.apk" --clobber
           else
             gh release create "$TAG" "blur-widget-${TAG}.apk" \
               --title "$TAG" \
-              --generate-notes
+              --notes-file release-notes.md
           fi
